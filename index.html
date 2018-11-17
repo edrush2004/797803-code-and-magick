@@ -183,28 +183,26 @@
 
 <script>
   'use strict';
-  var START_WIZARD_X = 0.5;
-  var START_WIZARD_Y = 0.33;
+  var HEIGHT_TO_WIDTH_PROPORTION = 1.337;
   
   var fireballSize = 22; 
   var wizardSpeed = 3;
   var wizardWidth = 70;
-  var heightToWidthProportion = 1.337
-  
+    
   var getFireballSpeed = function (left) {
      return left ? 5 : 2;    
   }
   
   var getWizardHeight = function (wizardWidth) {
-    return heightToWidthProportion * wizardWidth;
+    return HEIGHT_TO_WIDTH_PROPORTION * wizardWidth;
   }
   
   var getWizardX = function (width) {
-    return START_WIZARD_X * width - wizardWidth / 2;    
+    return (width - wizardWidth) / 2;    
   }
    
   var getWizardY = function (height) {
-    return START_WIZARD_Y * height - (wizardWidth * heightToWidthProportion) / 2;    
+    return height / 3;    
   }
   
 </script>
