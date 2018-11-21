@@ -23,8 +23,8 @@ var renderCloud = function (ctx, x, y, color) {
 var renderCongratulation = function (ctx, x, y, color, font) {
   ctx.fillStyle = color;
   ctx.font = font;
-  ctx.fillText("Ура вы победили!", x + CONGRATULAION_GAP_LEFT, y + CONGRATULAION_GAP_UP);
-  ctx.fillText("Список результатов:", x + CONGRATULAION_GAP_LEFT, y + CONGRATULAION_GAP_UP + CONGRATULAION_FONT_GAP);
+  ctx.fillText('Ура вы победили!', x + CONGRATULAION_GAP_LEFT, y + CONGRATULAION_GAP_UP);
+  ctx.fillText('Список результатов:', x + CONGRATULAION_GAP_LEFT, y + CONGRATULAION_GAP_UP + CONGRATULAION_FONT_GAP);
 };
 
 var getMaxElement = function (arr) {
@@ -40,33 +40,28 @@ var getMaxElement = function (arr) {
 
 
 window.renderStatistics = function (ctx, players, times) {
-  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, "rgba(0, 0, 0, 0.3)");
-  renderCloud(ctx, CLOUD_X, CLOUD_Y, "#fff");
-  renderCongratulation(ctx, CLOUD_X, CLOUD_Y, "#000", "16px PT Mono");
+  renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.3)');
+  renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
+  renderCongratulation(ctx, CLOUD_X, CLOUD_Y, '#000', '16px PT Mono');
 
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
 
-    if (players[i] === "Вы") {
-      ctx.fillStyle = "rgba(255, 0, 0, 1)";
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
       ctx.fillRect(CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP, COLUMN_WIDTH, -(COLUMN_HEIGHT * times[i]) / maxTime);
 
     } else {
-      var color = "rgba(0, 0, 255, " +  Math.random() +")";
+      var color = 'rgba(0, 0, 255,' + Math.random() + ')';
       ctx.fillStyle = color;
       ctx.fillRect(CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP, COLUMN_WIDTH, -(COLUMN_HEIGHT * times[i]) / maxTime);
 
-    };
+    }
+
     ctx.fillStyle = '#000';
     ctx.fillText(players[i], CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP + CAPTION_GAP);
-    ctx.fillText(Math.round(times[i]), CLOUD_X + COLUMN_GAP_LEFT + + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP - (COLUMN_HEIGHT * times[i]) / maxTime - CAPTION_GAP / 2);
+    ctx.fillText(Math.round(times[i]), CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP - (COLUMN_HEIGHT * times[i]) / maxTime - CAPTION_GAP / 2);
   }
 };
-
-
-
-
-
-
 
