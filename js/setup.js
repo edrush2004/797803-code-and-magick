@@ -20,28 +20,20 @@ var createWizardProperty = function (arr) {
   return arr[rand];
 };
 
-var wizards = [
-  {
+var getWizard = function () {
+  var wizard = {
     name: createWizardProperty(WIZARD_NAMES) + ' ' + createWizardProperty(WIZARD_SURNAMES),
     coatColor: createWizardProperty(WIZARD_COAT_COLOR),
     eyesColor: createWizardProperty(WIZARD_EYES_COLOR)
-  },
-  {
-    name: createWizardProperty(WIZARD_NAMES) + ' ' + createWizardProperty(WIZARD_SURNAMES),
-    coatColor: createWizardProperty(WIZARD_COAT_COLOR),
-    eyesColor: createWizardProperty(WIZARD_EYES_COLOR)
-  },
-  {
-    name: createWizardProperty(WIZARD_NAMES) + ' ' + createWizardProperty(WIZARD_SURNAMES),
-    coatColor: createWizardProperty(WIZARD_COAT_COLOR),
-    eyesColor: createWizardProperty(WIZARD_EYES_COLOR)
-  },
-  {
-    name: createWizardProperty(WIZARD_NAMES) + ' ' + createWizardProperty(WIZARD_SURNAMES),
-    coatColor: createWizardProperty(WIZARD_COAT_COLOR),
-    eyesColor: createWizardProperty(WIZARD_EYES_COLOR)
-  }
-];
+  };
+  return wizard;
+};
+
+var wizards = [];
+
+for (var i = 0; i < 4; i++) {
+  wizards.push(getWizard());
+}
 
 var renderWizard = function (wizard) {
 
@@ -56,8 +48,8 @@ var renderWizard = function (wizard) {
 
 var fragment = document.createDocumentFragment();
 
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(renderWizard(wizards[i]));
+for (var j = 0; j < wizards.length; j++) {
+  fragment.appendChild(renderWizard(wizards[j]));
 }
 
 similarListElement.appendChild(fragment);
