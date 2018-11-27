@@ -21,12 +21,12 @@ var createWizardProperty = function (arr) {
 };
 
 var getWizard = function () {
-  var wizard = {
+  return {
     name: createWizardProperty(WIZARD_NAMES) + ' ' + createWizardProperty(WIZARD_SURNAMES),
     coatColor: createWizardProperty(WIZARD_COAT_COLOR),
     eyesColor: createWizardProperty(WIZARD_EYES_COLOR)
   };
-  return wizard;
+
 };
 
 var wizards = [];
