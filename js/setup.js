@@ -28,34 +28,39 @@ var wizardFireballColor = [
   '#e6e848'
 ];
 
-var getRandomIndex = function (length) {
-  var randomIndex = Math.floor(Math.random() * (length - 1));
-  return randomIndex;
+var colorIndex = 1;
+
+var getWizardColor = function (arrColor) {
+  if (colorIndex >= arrColor.length) {
+    colorIndex = 0;
+  }
+  var index = colorIndex;
+  var color = arrColor[index];
+  colorIndex++;
+  return color;
 };
 
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
+
 var setupPlayer = document.querySelector('.setup-player');
+var setupFireball = document.querySelector('.setup-fireball-wrap');
+
 var setupWizardCoat = setupPlayer.querySelector('.wizard-coat');
 var setupWizardEyes = setupPlayer.querySelector('.wizard-eyes');
 
-var setupFireball = document.querySelector('.setup-fireball-wrap');
-// var setupFireballColor = setupFireball.querySelector('.wizard-eyes');
-
-
 setupWizardCoat.addEventListener('click', function () {
-  setupPlayer.querySelector('.wizard-coat').setAttribute('style', 'fill:' + wizardCoatColor[getRandomIndex(wizardCoatColor.length)]);
+  setupPlayer.querySelector('.wizard-coat').setAttribute('style', 'fill:' + getWizardColor(wizardCoatColor));
 });
 
 setupWizardEyes.addEventListener('click', function () {
-  setupPlayer.querySelector('.wizard-eyes').setAttribute('style', 'fill:' + wizardEyesColor[getRandomIndex(wizardEyesColor.length)]);
+  setupPlayer.querySelector('.wizard-eyes').setAttribute('style', 'fill:' + getWizardColor(wizardEyesColor));
 });
 
 setupFireball.addEventListener('click', function () {
-  setupFireball.setAttribute('value', '#ee4830');
+  setupFireball.setAttribute('style', 'background:' + getWizardColor(wizardFireballColor));
 });
-
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ECS_KEYCODE) {
@@ -92,3 +97,4 @@ setupClose.addEventListener('keydown', function (evt) {
     closePopup();
   }
 });
+
