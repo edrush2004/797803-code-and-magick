@@ -3,7 +3,7 @@
 var ECS_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
-var wizardCoatColor = [
+var wizardCoatColors = [
   'rgb(101, 137, 164)',
   'rgb(241, 43, 107)',
   'rgb(146, 100, 161)',
@@ -12,7 +12,7 @@ var wizardCoatColor = [
   'rgb(0, 0, 0)'
 ];
 
-var wizardEyesColor = [
+var wizardEyesColors = [
   'black',
   'red',
   'blue',
@@ -20,7 +20,7 @@ var wizardEyesColor = [
   'green'
 ];
 
-var wizardFireballColor = [
+var wizardFireballColors = [
   '#ee4830',
   '#30a8ee',
   '#5ce6c0',
@@ -51,19 +51,19 @@ var setupWizardCoat = setupPlayer.querySelector('.wizard-coat');
 var setupWizardEyes = setupPlayer.querySelector('.wizard-eyes');
 
 setupWizardCoat.addEventListener('click', function () {
-  setupPlayer.querySelector('.wizard-coat').setAttribute('style', 'fill:' + getWizardColor(wizardCoatColor));
+  setupPlayer.querySelector('.wizard-coat').setAttribute('style', 'fill:' + getWizardColor(wizardCoatColors));
 });
 
 setupWizardEyes.addEventListener('click', function () {
-  setupPlayer.querySelector('.wizard-eyes').setAttribute('style', 'fill:' + getWizardColor(wizardEyesColor));
+  setupPlayer.querySelector('.wizard-eyes').setAttribute('style', 'fill:' + getWizardColor(wizardEyesColors));
 });
 
 setupFireball.addEventListener('click', function () {
-  setupFireball.setAttribute('style', 'background:' + getWizardColor(wizardFireballColor));
+  setupFireball.setAttribute('style', 'background:' + getWizardColor(wizardFireballColors));
 });
 
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ECS_KEYCODE) {
+  if (evt.keyCode === ECS_KEYCODE && !document.activeElement.closest('.setup-user-name')) {
     closePopup();
   }
 };
