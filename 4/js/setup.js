@@ -63,7 +63,13 @@ setupFireball.addEventListener('click', function () {
 });
 
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ECS_KEYCODE && !document.activeElement.closest('.setup-user-name')) {
+  if (evt.keyCode !== ECS_KEYCODE) {
+    return;
+  }
+
+  if (document.activeElement.closest('.setup-user-name')) {
+    evt.stopPropagation();
+  } else {
     closePopup();
   }
 };
