@@ -2,6 +2,8 @@
 
 var ECS_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
+var START_SETUP_POSITION_TOP = '80px';
+var START_SETUP_POSITION_LEFT = '50%';
 
 var wizardCoatColors = [
   'rgb(101, 137, 164)',
@@ -82,6 +84,8 @@ var openPopup = function () {
 var closePopup = function () {
   setup.classList.add('hidden');
   document.addEventListener('keydown', onPopupEscPress);
+  setup.style.top = START_SETUP_POSITION_TOP;
+  setup.style.left = START_SETUP_POSITION_LEFT;
 };
 
 setupOpen.addEventListener('click', function () {
@@ -128,12 +132,12 @@ setupClose.addEventListener('keydown', function (evt) {
       };
 
       startCoords = {
-        x: evt.clientX,
-        y: evt.clientY
+        x: moveEvt.clientX,
+        y: moveEvt.clientY
       };
 
       setup.style.top = (setup.offsetTop - shift.y) + 'px';
-      setup.style.left = (setup.offsetTop - shift.x) + 'px';
+      setup.style.left = (setup.offsetLeft - shift.x) + 'px';
     };
 
     var onMouseUp = function (upEvt) {
@@ -143,8 +147,8 @@ setupClose.addEventListener('keydown', function (evt) {
       document.removeEventListener('mouseup', onMouseUp);
 
       if (dragged) {
-        var onClickPreventDefault = function (evt) {
-          evt.preventDefault();
+        var onClickPreventDefault = function (e) {
+          e.preventDefault();
           dialogHandler.removeEventListener('click', onClickPreventDefault);
         };
         dialogHandler.addEventListener('click', onClickPreventDefault);
