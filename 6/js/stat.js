@@ -46,9 +46,8 @@
 
     var maxTime = getMaxElement(times);
 
-    for (var i = 0; i < players.length; i++) {
-
-      if (players[i] === 'Вы') {
+    players.forEach(function (player, i) {
+      if (player === 'Вы') {
         ctx.fillStyle = 'rgba(255, 0, 0, 1)';
       } else {
         var color = 'rgba(0, 0, 255,' + Math.random() + ')';
@@ -56,10 +55,9 @@
       }
 
       ctx.fillRect(CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP, COLUMN_WIDTH, -(COLUMN_HEIGHT * times[i]) / maxTime);
-
       ctx.fillStyle = '#000';
-      ctx.fillText(players[i], CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP + CAPTION_GAP);
+      ctx.fillText(player, CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP + CAPTION_GAP);
       ctx.fillText(Math.round(times[i]), CLOUD_X + COLUMN_GAP_LEFT + (COLUMN_WIDTH + COLUMN_GAP) * i, CLOUD_Y + COLUMN_GAP_UP - (COLUMN_HEIGHT * times[i]) / maxTime - CAPTION_GAP / 2);
-    }
+    });
   };
 })();
