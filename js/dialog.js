@@ -2,14 +2,19 @@
 
 (function () {
 
+  var START_SETUP_POSITION_TOP = '80px';
+  var START_SETUP_POSITION_LEFT = '50%';
   var setup = document.querySelector('.setup');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
-  var START_SETUP_POSITION_TOP = '80px';
-  var START_SETUP_POSITION_LEFT = '50%';
+  var setupUserName = document.querySelector('.setup-user-name');
 
   var onPopupEscPress = function (evt) {
-    window.util.isEscEvent(evt, closePopup);
+    if (setupUserName === document.activeElement) {
+      return;
+    } else {
+      window.util.isEscEvent(evt, closePopup);
+    }
   };
 
   setupOpen.addEventListener('click', function () {
@@ -35,8 +40,9 @@
 
   var closePopup = function () {
     setup.classList.add('hidden');
-    document.addEventListener('keydown', onPopupEscPress);
+    document.removeEventListener('keydown', onPopupEscPress);
     setup.style.top = START_SETUP_POSITION_TOP;
     setup.style.left = START_SETUP_POSITION_LEFT;
+
   };
 })();
