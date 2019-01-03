@@ -10,9 +10,7 @@
   var setupUserName = document.querySelector('.setup-user-name');
 
   var onPopupEscPress = function (evt) {
-    if (setupUserName === document.activeElement) {
-      return;
-    } else {
+    if (setupUserName !== document.activeElement) {
       window.util.isEscEvent(evt, closePopup);
     }
   };
