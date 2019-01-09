@@ -13,5 +13,6 @@
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
-  window.backend.load(rendErrorMessage);
+  window.backend.save(null, null, rendErrorMessage);
+  window.backend.load(null, rendErrorMessage);
 })();

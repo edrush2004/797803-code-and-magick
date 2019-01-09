@@ -2,7 +2,6 @@
 
 (function () {
 
-
   window.backend = {
 
     save: function (data, onLoad, onError) {
@@ -33,7 +32,7 @@
       xhr.send(data);
     },
 
-    load: function (onError, onLoad) {
+    load: function (onLoad, onError) {
 
       var URL = 'https://js.dump.academy/code-and-magick/data';
 
@@ -59,8 +58,8 @@
 
       xhr.open('GET', URL);
       xhr.send();
-
     }
   };
+
 })();
 
