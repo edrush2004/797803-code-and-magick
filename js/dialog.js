@@ -48,6 +48,6 @@
     evt.preventDefault();
     window.backend.save(new FormData(form), function () {
       setup.classList.add('hidden');
-    }, null);
+    }, window.errorMessage.rendErrorMessage);
   });
 })();
