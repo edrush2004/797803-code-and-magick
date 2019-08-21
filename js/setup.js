@@ -64,9 +64,9 @@ var getWizard = function () {
 };
 
 var wiz = [];
-for (var i = 0; i <  Wizard.quantity; i++){
+for (var j = 0; j <  Wizard.quantity; j++){
   wiz.push(getWizard());
-};
+}
 
 var fragment = document.createDocumentFragment();
 
