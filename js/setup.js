@@ -1,7 +1,7 @@
 'use strict'
 
 var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
+//userDialog.classList.remove('hidden');
 //userDialog.querySelector('.setup-similar').classList.remove('hidden');
 document.querySelector('.setup-similar').classList.remove('hidden');
 
@@ -51,8 +51,8 @@ var similarWizaedTemplate = document.querySelector('#similar-wizard-template')
 
 var getRandomItem = function (arr) {
   
-  return  arr[Math.floor(Math.random() * arr.length)];
-  
+  return  arr[Math.floor(Math.random() * (arr.length - 1) - 0)  + 0 + 1 ];
+              
 };
 
 var getWizard = function () {
@@ -81,11 +81,79 @@ for (var i = 0; i <  wiz.length; i++){
     wizardElement.querySelector('.wizard-eyes').style.fill = 
       wiz[i].eyesColor;
 
-  fragment.appendChild(wizardElement);
+  fragment.appendChild(wizardElement);  
     } 
  
   similarListElement.appendChild(fragment);
-   
+
+//// Урок 4 
+var fireballWrap = [
+'#ee4830',
+'#30a8ee',
+'#5ce6c0',
+'#e848d5',
+'#e6e848' ];
+
+
+  var setup = document.querySelector('.setup');
+  var setupOpen = document.querySelector('.setup-open');
+  var setupClose = document.querySelector('.setup-close');
+  var wizardName = document.querySelector('.setup-user-name');
+  var wizardCoat = document.querySelector('.wizard-coat');
+  var wizardEyes = document.querySelector('.wizard-eyes');
+  var wizardFireballWrap = document.querySelector('.setup-fireball-wrap');
+  var onPopupEscPress = function(evt){
+    if(evt.keyCode === 27 && evt.target !== wizardName){
+      closePopup();
+    }
+  };
+
+  var openPopup = function () {
+    setup.classList.remove('hidden');
+    document.addEventListener('keydown',onPopupEscPress);
+    
+  };
+
+  var closePopup = function () {
+    setup.classList.add('hidden');
+    document.removeEventListener('keydown', onPopupEscPress);
+  };
+
+  //stopPropagation()  
+  setupOpen.addEventListener('click', function(){ 
+    openPopup();  
+  });
+
+  setupClose.addEventListener('click', function(){
+    closePopup();
+  });
+
+  setupOpen.addEventListener('keydown', function(evt){
+    if(evt.keyCode === 13){
+      openPopup();
+    }
+  })
+  
+  setupClose.addEventListener('keydown', function(evt){
+    if(evt.keyCode === 13){
+      closePopup();
+    }
+  })
+
+//Изменение цвета мантии
+var onCoatClick = function (){
+  wizardCoat.style.fill = getRandomItem(Wizard.coatColor);
+}
+var onEyesClick = function (){
+  wizardEyes.style.fill = getRandomItem(Wizard.coatColor);
+}
+var onFireballClick = function (){
+  wizardFireballWrap.style.background = getRandomItem(fireballWrap);
+}
+wizardCoat.addEventListener('click', onCoatClick);
+wizardEyes.addEventListener('click', onEyesClick);
+wizardFireballWrap.addEventListener('click', onFireballClick);
+ 
 
 
 
